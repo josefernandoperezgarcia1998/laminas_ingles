@@ -60,7 +60,7 @@ class CalificacionesController extends AbstractActionController
             $this->entityManager->persist($entity);
             $this->entityManager->flush();
 
-        } */
+        } */ 
         
         $grupo = $this->entityManager->getRepository(Grupo::class)->findOneBy(['clave' => 'ABC']);
         $alumnos = $grupo->getAlumnos();
@@ -70,11 +70,13 @@ class CalificacionesController extends AbstractActionController
             
             $this->save($data, $grupo);
             
+            /* dd($data); */
 
         }
-
+        
         return new ViewModel([
             'alumnos' => $alumnos,
+           
         ]);
     }
 
@@ -95,5 +97,9 @@ class CalificacionesController extends AbstractActionController
         }
 
         $this->entityManager->flush();
+
+        //Presiona el btn y redirige a la ruta "calificacionparcial"
+        return $this->redirect()->toRoute('calificacionparcial'); 
     }
+    
 }
