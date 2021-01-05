@@ -91,6 +91,17 @@ class CalificacionesController extends AbstractActionController
             $calificacion->setAlumno($alumno);
             $calificacion->setGrupo($grupo);
             $calificacion->setParcial(1);
+            /*  De la línea 99-105 ( el if y el setCalificacion)
+            se hace lo siguiente, si value (la calificacion) es mayor ó igual qué 70, va a tomar su calificacion tal cual.. 
+            en caso contrario que value (la calificacion) sea menor qué 70, entonces value va a valer 0 y eso se asignará
+            a la calificación en la línea 105
+            */
+            if($value >= 70){
+                $value = $value;
+            }
+            else{
+               $value = 0;
+            }
             $calificacion->setCalificacion($value);
             
             $this->entityManager->persist($calificacion);
