@@ -73,7 +73,7 @@
               </tr>
               <tr>
                 <td>GRUPO: </td>
-                <td><b>VA3</b></td>
+                <td>ABC</td>
               </tr>
             </tbody>
             <tbody>
@@ -99,29 +99,36 @@
             </tr>
           </thead>
           <tbody>
-          <?php foreach($this->alumnos as $alumno): ?>
-                        <tr>
-                            <td>
-                            <label for="<?= $alumno->getNoDeControl() ?>">
-                            <?= $alumno->getNoDeControl() ?>
-                            </label>
-                            </td>
-                            <td>
-                            <label for="<?= $alumno->getNoDeControl() ?>">
-                            <?= $alumno->getNombre() ?>
-                            </label>
-                            </td>
-                            <td>
-                            <?php foreach($this->calificaciones as $calificacion): ?>
-                            <label for="<?= $calificacion->getCalificaciones() ?>">
-                            <?= $alumno->getCalificaciones() ?>
-                                </label>
-                                <?php endforeach ?>  
-                                </div>
-                            </div>
-                            </th>
-                        </tr>
-                        <?php endforeach ?>
+          <?php foreach($this->alumnos as $alumno): ?> <!-- //inicia foreach alumnos -->
+            <tr>
+              <td>
+                <label for="<?= $alumno->getNoDeControl() ?>">
+                  <?= $alumno->getNoDeControl() ?>
+                </label>
+              </td>
+              <td>
+                <label for="<?= $alumno->getNoDeControl() ?>">
+                  <?= $alumno->getNombre() ?>
+                </label>
+              </td>
+              <td>
+                <!-- Poner en codigo php lo siguiente "echo($calificaciones)" -->
+     
+                <label for="<?= $alumno->getNoDeControl() ?>">
+                    <?php echo($calificaciones); ?>
+                  </label>
+              
+
+
+              </td>
+              <?php endforeach ?>
+              
+
+           
+              </div>
+              </div>
+              </th>
+              </tr>
         </table>
    </div>
   </section>

@@ -18,22 +18,32 @@ class actaController extends AbstractActionController
     }
     public function actaAction()
     {
-        $calificaciones = $this->entityManager->getRepository(Calificacion::class)->findOneBy('ASC')->getCalificacion();
+        //Quitar linea 21 de acta controler para ver el acta SIN CALIFICACIONES
+        //$calificaciones = $this->entityManager->getRepository(Calificacion::class)->findOneBy('ASC')->getCalificacion();
         $grupo = $this->entityManager->getRepository(Grupo::class)->findOneBy(['clave' => 'ABC']);
         $alumnos = $grupo->getAlumnos();
-       
+        $calificacion = $this->entityManager->getRepository(Calificacion::class)->findOneBy(['alumno' => '1627002']); 
+        $calificacion1 = $this->entityManager->getRepository(Calificacion::class)->findOneBy(['alumno' => '1627003']); 
+        $calificacion2 = $this->entityManager->getRepository(Calificacion::class)->findOneBy(['alumno' => '1627004']); 
+        
+        $calificaciones = $calificacion->getCalificacion();
+        $calificaciones3 = $calificacion1->getCalificacion();
+        $calificaciones4 = $calificacion2->getCalificacion();
 
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost('calificaciones');
-            
-            $this->save($data, $grupo);
-            
-            dd($data);
         }
-
+        
         return new ViewModel([
-            'alumnos' => $alumnos,
-            'alumnos_calificaciones' => $calificaciones,
+            'alumnos' => $alumnos, 
+            'calificaciones' => $calificaciones,
+            var_dump($calificaciones),
+            var_dump($calificaciones3),
+            var_dump($calificaciones4),
+            
+            //'calificaciones' => $calificaciones,            
+            /* 'alumnos_calificaciones' => $calificaciones,  */
         ]);
+        
     }
-}
+} 
